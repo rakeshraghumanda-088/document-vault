@@ -67,3 +67,9 @@ document-vault/
 ├── prisma7.config.ts
 ├── package.json
 └── README.md
+
+## Design Extension
+
+If this API were extended further, I would add authentication and authorization,
+structured error handling, stronger database indexes for larger search workloads,
+and more comprehensive integration tests covering the GraphQL API end-to-end.
