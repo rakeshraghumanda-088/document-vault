@@ -1,0 +1,28 @@
+{
+  "name": "document-vault",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run src/server.ts",
+    "gendb": "prisma generate",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/pg": "^8.23.1",
+    "prisma": "7.10.0"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "dotenv": "^17.4.2",
+    "graphql": "^17.0.2",
+    "graphql-yoga": "^5.22.0",
+    "pg": "^8.23.0"
+  }
+}

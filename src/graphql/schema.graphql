@@ -1,0 +1,80 @@
+type Collection {
+  id: ID!
+  name: String!
+  slug: String!
+  createdAt: String!
+  documents(take: Int, cursor: String): DocumentConnection!
+}
+
+type Document {
+  id: ID!
+  title: String!
+  content: String!
+  tags: [String!]!
+  collectionId: ID!
+  collection: Collection!
+  isArchived: Boolean!
+  createdAt: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  endCursor: String
+}
+
+type DocumentConnection {
+  nodes: [Document!]!
+  pageInfo: PageInfo!
+}
+
+input CreateCollectionInput {
+  name: String!
+  slug: String!
+}
+
+input CreateDocumentInput {
+  title: String!
+  content: String!
+  tags: [String!]
+  collectionId: ID!
+  isArchived: Boolean
+}
+
+input UpdateDocumentInput {
+  title: String
+  content: String
+  tags: [String!]
+  isArchived: Boolean
+}
+
+type Query {
+  collections: [Collection!]!
+
+  collection(id: ID!): Collection
+
+  documents(
+    collectionId: ID
+    search: String
+    isArchived: Boolean
+    take: Int
+    cursor: String
+  ): DocumentConnection!
+}
+
+type Mutation {
+  createCollection(input: CreateCollectionInput!): Collection!
+
+  createDocument(input: CreateDocumentInput!): Document!
+
+  updateDocument(
+    id: ID!
+    input: UpdateDocumentInput!
+  ): Document!
+
+  deleteDocument(id: ID!): Document!
+
+  moveDocument(
+    id: ID!
+    collectionId: ID!
+  ): Document!
+}
