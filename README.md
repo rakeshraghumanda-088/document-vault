@@ -45,25 +45,11 @@ The API rejects:
 
 Validation failures return GraphQL errors with the `BAD_USER_INPUT` code.
 
-## Project Structure
+## Setup
 
-```text
-document-vault/
-├── prisma/
-│   ├── migrations/
-│   └── schema.prisma
-├── src/
-│   ├── graphql/
-│   │   └── schema.graphql
-│   ├── lib/
-│   │   └── prisma.ts
-│   ├── resolvers/
-│   │   └── index.ts
-│   └── server.ts
-├── tests/
-│   ├── resolvers.test.ts
-│   └── integration.test.ts
-├── docker-compose.yml
-├── prisma7.config.ts
-├── package.json
-└── README.md
+Make sure Docker and Bun are installed.
+
+From the project root, run:
+
+```bash
+docker compose up -d && bun install && bun run gendb && bun run dev
